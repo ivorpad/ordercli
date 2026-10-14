@@ -23,6 +23,7 @@ func newGlovoCmd(st *state) *cobra.Command {
 	cmd.AddCommand(newGlovoOrderCmd(st))
 	cmd.AddCommand(newGlovoOrdersCmd(st))
 	cmd.AddCommand(newGlovoCartCmd(st))
+	cmd.AddCommand(newGlovoPurchaseCmd(st))
 	cmd.AddCommand(newGlovoMeCmd(st))
 	return cmd
 }
@@ -442,6 +443,7 @@ func newGlovoCartCmd(st *state) *cobra.Command {
 	}
 
 	cmd.Flags().BoolVar(&asJSON, "json", false, "print raw JSON")
+	cmd.AddCommand(newGlovoCartAddCmd(st))
 	return cmd
 }
 

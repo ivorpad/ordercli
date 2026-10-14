@@ -9,8 +9,8 @@ type OrdersResponse struct {
 
 // Pagination contains pagination info for order list
 type Pagination struct {
-	CurrentLimit int     `json:"currentLimit"`
-	Next         *string `json:"next"`
+	CurrentLimit int `json:"currentLimit"`
+	Next         any `json:"next"`
 }
 
 // Order represents a single order in the history
@@ -69,19 +69,19 @@ type BasketsResponse []Basket
 
 // Basket represents a shopping cart for a store
 type Basket struct {
-	StoreID          int           `json:"storeId"`
-	StoreAddressID   int           `json:"storeAddressId"`
-	StoreName        string        `json:"storeName"`
-	StoreSlug        string        `json:"storeSlug"`
-	Products         []BasketItem  `json:"products"`
-	SubTotal         float64       `json:"subTotal"`
-	DeliveryFee      float64       `json:"deliveryFee"`
-	ServiceFee       float64       `json:"serviceFee"`
-	SmallOrderFee    float64       `json:"smallOrderFee"`
-	Total            float64       `json:"total"`
-	Currency         string        `json:"currency"`
-	MinOrderValue    float64       `json:"minOrderValue"`
-	IsMinOrderMet    bool          `json:"isMinOrderMet"`
+	StoreID        int          `json:"storeId"`
+	StoreAddressID int          `json:"storeAddressId"`
+	StoreName      string       `json:"storeName"`
+	StoreSlug      string       `json:"storeSlug"`
+	Products       []BasketItem `json:"products"`
+	SubTotal       float64      `json:"subTotal"`
+	DeliveryFee    float64      `json:"deliveryFee"`
+	ServiceFee     float64      `json:"serviceFee"`
+	SmallOrderFee  float64      `json:"smallOrderFee"`
+	Total          float64      `json:"total"`
+	Currency       string       `json:"currency"`
+	MinOrderValue  float64      `json:"minOrderValue"`
+	IsMinOrderMet  bool         `json:"isMinOrderMet"`
 }
 
 // BasketItem represents an item in the cart
@@ -97,40 +97,40 @@ type BasketItem struct {
 
 // UserResponse represents the response from /v3/me
 type UserResponse struct {
-	ID                    int          `json:"id"`
-	Type                  string       `json:"type"`
-	URN                   string       `json:"urn"`
-	Name                  string       `json:"name"`
-	Picture               *string      `json:"picture"`
-	Email                 string       `json:"email"`
-	Description           *string      `json:"description"`
-	FacebookID            *string      `json:"facebookId"`
-	PreferredCityCode     string       `json:"preferredCityCode"`
-	PreferredLanguage     string       `json:"preferredLanguage"`
-	PreferredLanguageRegion string     `json:"preferredLanguageRegion"`
-	Locale                string       `json:"locale"`
-	DeviceURN             *string      `json:"deviceUrn"`
-	AnalyticsID           *string      `json:"analyticsId"`
-	MediaCampaign         *string      `json:"mediaCampaign"`
-	MediaSource           *string      `json:"mediaSource"`
-	OS                    *string      `json:"os"`
-	DeliveredOrdersCount  int          `json:"deliveredOrdersCount"`
-	PhoneNumber           *PhoneNumber `json:"phoneNumber"`
-	CompanyDetail         *string      `json:"companyDetail"`
-	VirtualBalance        *Balance     `json:"virtualBalance"`
-	FreeOrders            int          `json:"freeOrders"`
-	PaymentMethod         string       `json:"paymentMethod"`
-	PaymentWay            string       `json:"paymentWay"`
-	CurrentCard           *string      `json:"currentCard"`
-	AccumulatedDebt       float64      `json:"accumulatedDebt"`
-	Defaulter             bool         `json:"defaulter"`
-	Gender                *string      `json:"gender"`
-	AgeMin                *int         `json:"ageMin"`
-	AgeMax                *int         `json:"ageMax"`
-	Birthday              *string      `json:"birthday"`
-	PrivacySettings       any          `json:"privacySettings"`
-	Permissions           []Permission `json:"permissions"`
-	DataPrivacyEnabled    bool         `json:"dataPrivacyEnabled"`
+	ID                      int          `json:"id"`
+	Type                    string       `json:"type"`
+	URN                     string       `json:"urn"`
+	Name                    string       `json:"name"`
+	Picture                 *string      `json:"picture"`
+	Email                   string       `json:"email"`
+	Description             *string      `json:"description"`
+	FacebookID              *string      `json:"facebookId"`
+	PreferredCityCode       string       `json:"preferredCityCode"`
+	PreferredLanguage       string       `json:"preferredLanguage"`
+	PreferredLanguageRegion string       `json:"preferredLanguageRegion"`
+	Locale                  string       `json:"locale"`
+	DeviceURN               *string      `json:"deviceUrn"`
+	AnalyticsID             *string      `json:"analyticsId"`
+	MediaCampaign           *string      `json:"mediaCampaign"`
+	MediaSource             *string      `json:"mediaSource"`
+	OS                      *string      `json:"os"`
+	DeliveredOrdersCount    int          `json:"deliveredOrdersCount"`
+	PhoneNumber             *PhoneNumber `json:"phoneNumber"`
+	CompanyDetail           *string      `json:"companyDetail"`
+	VirtualBalance          *Balance     `json:"virtualBalance"`
+	FreeOrders              int          `json:"freeOrders"`
+	PaymentMethod           string       `json:"paymentMethod"`
+	PaymentWay              string       `json:"paymentWay"`
+	CurrentCard             *string      `json:"currentCard"`
+	AccumulatedDebt         float64      `json:"accumulatedDebt"`
+	Defaulter               bool         `json:"defaulter"`
+	Gender                  *string      `json:"gender"`
+	AgeMin                  *int         `json:"ageMin"`
+	AgeMax                  *int         `json:"ageMax"`
+	Birthday                *string      `json:"birthday"`
+	PrivacySettings         any          `json:"privacySettings"`
+	Permissions             []Permission `json:"permissions"`
+	DataPrivacyEnabled      bool         `json:"dataPrivacyEnabled"`
 }
 
 // PhoneNumber represents a phone number with country code

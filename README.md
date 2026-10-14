@@ -204,6 +204,36 @@ Requires a valid Glovo browser access token. The CLI stores the token redacted i
 ./ordercli glovo logout
 ```
 
+### Glovo baskets and purchases (experimental)
+
+The web app updates a basket with `PUT /v2/baskets/{basketId}`. `cart add`
+reads the current basket first and previews the change unless `--confirm` is
+given. Product IDs come from Glovo's store catalog; customizable products need
+their selected customizations as a JSON array.
+
+```sh
+ordercli glovo cart add <store-id> <store-address-id> <product-id> \
+  --store-product-id <store-product-id> --quantity 2
+ordercli glovo cart add <store-id> <store-address-id> <product-id> \
+  --store-product-id <store-product-id> --quantity 2 --confirm
+```
+
+`purchase` uses the signed-in Glovo web checkout through `browse`. It never
+submits by default. Preview the checkout button first, then explicitly provide
+the exact button text and an EUR spending cap. The web checkout handles payment
+methods and any required authentication; the CLI cannot bypass those steps.
+
+```sh
+ordercli glovo purchase <store-id> <store-address-id> --city-slug madrid
+ordercli glovo purchase <store-id> <store-address-id> --city-slug madrid \
+  --confirm --expected-button '<exact text from preview>' --max-total 30
+```
+
+The Glovo purchase flow uses private APIs and may change. This fork's purchase
+commands have only been tested against local mocks, **not** against a live
+purchase. A successful button click is not proof that payment or order creation
+succeeded; verify with `ordercli glovo orders` or Glovo's website.
+
 ## Safety
 
 This talks to private APIs. Use at your own risk; rate limits / bot protection may block requests.
